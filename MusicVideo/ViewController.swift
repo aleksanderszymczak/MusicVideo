@@ -3,7 +3,7 @@
 //  MusicVideo
 //
 //  Created by olos on 27.04.2016.
-//  Copyright © 2016 olos. All rights reserved.
+//  Copyright © 2016 olos. All rights reserved..
 //
 
 import UIKit
