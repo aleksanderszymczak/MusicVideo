@@ -16,6 +16,7 @@
 		883B576E1CD08E0000055363 /* MusicVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B576D1CD08E0000055363 /* MusicVideoUITests.swift */; };
 		88BA41831CD37E6800DF3DF4 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BA41821CD37E6800DF3DF4 /* APIManager.swift */; };
 		EA2EBAFE1CE8B30C00286D72 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2EBAFD1CE8B30C00286D72 /* Reachability.m */; };
+		EA78CD1D1CF363140008B1CD /* MusicVideoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78CD1C1CF363140008B1CD /* MusicVideoTVC.swift */; };
 		EAC311161CDCEB0D009B6DE2 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC311151CDCEB0D009B6DE2 /* Constans.swift */; };
 		EAC311181CDCEDFD009B6DE2 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC311171CDCEDFD009B6DE2 /* MusicVideo.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		EA2EBAFB1CE8B30C00286D72 /* MusicVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicVideo-Bridging-Header.h"; sourceTree = "<group>"; };
 		EA2EBAFC1CE8B30C00286D72 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		EA2EBAFD1CE8B30C00286D72 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		EA78CD1C1CF363140008B1CD /* MusicVideoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTVC.swift; sourceTree = "<group>"; };
 		EAC311151CDCEB0D009B6DE2 /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		EAC311171CDCEDFD009B6DE2 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 		EA3C6F0C1CD2715E000ECB97 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EA78CD1C1CF363140008B1CD /* MusicVideoTVC.swift */,
 				883B574F1CD08DFB00055363 /* ViewController.swift */,
 			);
 			name = Controller;
@@ -327,6 +330,7 @@
 				EAC311161CDCEB0D009B6DE2 /* Constans.swift in Sources */,
 				EA2EBAFE1CE8B30C00286D72 /* Reachability.m in Sources */,
 				883B574E1CD08DFB00055363 /* AppDelegate.swift in Sources */,
+				EA78CD1D1CF363140008B1CD /* MusicVideoTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
