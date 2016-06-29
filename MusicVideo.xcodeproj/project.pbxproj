@@ -16,7 +16,11 @@
 		883B576E1CD08E0000055363 /* MusicVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B576D1CD08E0000055363 /* MusicVideoUITests.swift */; };
 		88BA41831CD37E6800DF3DF4 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BA41821CD37E6800DF3DF4 /* APIManager.swift */; };
 		EA2EBAFE1CE8B30C00286D72 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2EBAFD1CE8B30C00286D72 /* Reachability.m */; };
+		EA390FAC1D11A21B002588D8 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA390FAB1D11A21B002588D8 /* SettingsTVC.swift */; };
+		EA4EBDAB1CF7118A00F499A4 /* MusicVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4EBDAA1CF7118A00F499A4 /* MusicVideoTableViewCell.swift */; };
+		EA71FA941D05E2230085ECB7 /* MusicVideoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA71FA931D05E2230085ECB7 /* MusicVideoDetailVC.swift */; };
 		EA78CD1D1CF363140008B1CD /* MusicVideoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78CD1C1CF363140008B1CD /* MusicVideoTVC.swift */; };
+		EA857FBF1D184319001A5A19 /* aboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA857FBE1D184319001A5A19 /* aboutVC.swift */; };
 		EAC311161CDCEB0D009B6DE2 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC311151CDCEB0D009B6DE2 /* Constans.swift */; };
 		EAC311181CDCEDFD009B6DE2 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC311171CDCEDFD009B6DE2 /* MusicVideo.swift */; };
 /* End PBXBuildFile section */
@@ -56,7 +60,11 @@
 		EA2EBAFB1CE8B30C00286D72 /* MusicVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicVideo-Bridging-Header.h"; sourceTree = "<group>"; };
 		EA2EBAFC1CE8B30C00286D72 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		EA2EBAFD1CE8B30C00286D72 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		EA390FAB1D11A21B002588D8 /* SettingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
+		EA4EBDAA1CF7118A00F499A4 /* MusicVideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTableViewCell.swift; sourceTree = "<group>"; };
+		EA71FA931D05E2230085ECB7 /* MusicVideoDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoDetailVC.swift; sourceTree = "<group>"; };
 		EA78CD1C1CF363140008B1CD /* MusicVideoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTVC.swift; sourceTree = "<group>"; };
+		EA857FBE1D184319001A5A19 /* aboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = aboutVC.swift; sourceTree = "<group>"; };
 		EAC311151CDCEB0D009B6DE2 /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		EAC311171CDCEDFD009B6DE2 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,7 +167,11 @@
 		EA3C6F0C1CD2715E000ECB97 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EA857FBE1D184319001A5A19 /* aboutVC.swift */,
+				EA390FAB1D11A21B002588D8 /* SettingsTVC.swift */,
 				EA78CD1C1CF363140008B1CD /* MusicVideoTVC.swift */,
+				EA4EBDAA1CF7118A00F499A4 /* MusicVideoTableViewCell.swift */,
+				EA71FA931D05E2230085ECB7 /* MusicVideoDetailVC.swift */,
 				883B574F1CD08DFB00055363 /* ViewController.swift */,
 			);
 			name = Controller;
@@ -324,12 +336,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA857FBF1D184319001A5A19 /* aboutVC.swift in Sources */,
 				88BA41831CD37E6800DF3DF4 /* APIManager.swift in Sources */,
+				EA71FA941D05E2230085ECB7 /* MusicVideoDetailVC.swift in Sources */,
 				883B57501CD08DFB00055363 /* ViewController.swift in Sources */,
 				EAC311181CDCEDFD009B6DE2 /* MusicVideo.swift in Sources */,
+				EA4EBDAB1CF7118A00F499A4 /* MusicVideoTableViewCell.swift in Sources */,
 				EAC311161CDCEB0D009B6DE2 /* Constans.swift in Sources */,
 				EA2EBAFE1CE8B30C00286D72 /* Reachability.m in Sources */,
 				883B574E1CD08DFB00055363 /* AppDelegate.swift in Sources */,
+				EA390FAC1D11A21B002588D8 /* SettingsTVC.swift in Sources */,
 				EA78CD1D1CF363140008B1CD /* MusicVideoTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

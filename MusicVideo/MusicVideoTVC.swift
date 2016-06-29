@@ -12,12 +12,20 @@ class MusicVideoTVC: UITableViewController {
 
     var videos = [Videos]()
     
+    var filterSearch = [Videos]()
+    
+    let resultSearchController = UISearchController(searchResultsController: nil)
+    
+    var limit = 10
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MusicVideoTVC.reachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MusicVideoTVC.preferedFontChange), name: UIContentSizeCategoryDidChangeNotification, object: nil)
         
         reachabilityStatusChanged()
         
@@ -39,6 +47,23 @@ class MusicVideoTVC: UITableViewController {
         for (value, item) in videos.enumerate() {
             print(value, "name = \(item.vName)")
         }
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
+        
+        title = "The iTunes Top \(videos.count) Music Videos"
+        
+        // Setup the Search Controller
+        // resultSearchController.searchResultUpdater = self
+        
+        definesPresentationContext = true
+        
+        resultSearchController.dimsBackgroundDuringPresentation = false
+        resultSearchController.searchBar.placeholder = "Search for Artist"
+        resultSearchController.searchBar.searchBarStyle = .Prominent
+        
+        // add search bar to table view
+        tableView.tableHeaderView = resultSearchController.searchBar
+
         tableView.reloadData()
     }
     
@@ -47,7 +72,7 @@ class MusicVideoTVC: UITableViewController {
         
         switch reachabilityStatus {
         case NOACCESS :
-            view.backgroundColor = UIColor.redColor()
+            //view.backgroundColor = UIColor.redColor()
             
             dispatch_async(dispatch_get_main_queue()) {
                 let alert = UIAlertController(title: "No Internet Access", message: "Please make sure you are connected to the Internet", preferredStyle: .Alert)
@@ -72,7 +97,7 @@ class MusicVideoTVC: UITableViewController {
             }
             
         default:
-            view.backgroundColor = UIColor.greenColor()
+            //view.backgroundColor = UIColor.greenColor()
             
             if videos.count > 0 {
                 print("do not refresh API")
@@ -82,10 +107,40 @@ class MusicVideoTVC: UITableViewController {
         }
     }
     
+    func preferedFontChange(){
+        
+    print("Prefered font has changed")
+        
+    }
+    
+    @IBAction func refresh(sender: UIRefreshControl) {
+       refreshControl?.endRefreshing()
+        runAPI()
+    }
+    
+    
+    func getAPICount() {
+        
+        if (NSUserDefaults.standardUserDefaults().objectForKey("APICNT") != nil) {
+            
+            let theValue = NSUserDefaults.standardUserDefaults().objectForKey("APICNT") as! Int
+            limit = theValue
+        }
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "E, dd MM yyyy HH:mm:ss"
+        let refreshDte = formatter.stringFromDate(NSDate())
+        
+        refreshControl?.attributedTitle = NSAttributedString(string: "\(refreshDte)")
+        
+    }
+    
     func runAPI() {
         // Call API
+        getAPICount()
+        
         let api = APIManager()
-        api.loadData("https://itunes.apple.com/pl/rss/topmusicvideos/limit=10/json",
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=\(limit)/json",
                      completion: didLoadData)
 
     }
@@ -93,30 +148,66 @@ class MusicVideoTVC: UITableViewController {
     deinit
     {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "preferedFontChange", object: nil)
         
     }
 
-
+    // MARK DATA SOURCE
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
+        if resultSearchController.active {
+            return filterSearch.count
+        }
         return videos.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        let video = videos[indexPath.row]
-        cell.textLabel?.text = ("\(indexPath.row + 1)")
-        cell.detailTextLabel?.text = video.vName
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MusicVideoTableViewCell
+        
+        if resultSearchController.active {
+            cell.video = filterSearch[indexPath.row]
+        } else {
+            
+            cell.video = videos[indexPath.row]
+        }
         return cell
     }
     
+    
+     // MARK: - Navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     
+        if segue.identifier == "musicDetail" {
+            
+            if let indexpath = tableView.indexPathForSelectedRow {
+                let video: Videos
+                
+                if resultSearchController.active {
+                    video = filterSearch[indexpath.row]
+                } else {
+                    video = videos[indexpath.row]
+                }
 
+                let dvc = segue.destinationViewController as! MusicVideoDetailVC
+                dvc.videos = video
+            }
+        }
+        
+     }
+    
+    
+    
+    
+    
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -152,14 +243,6 @@ class MusicVideoTVC: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }

@@ -11,6 +11,8 @@ import Foundation
 
 class Videos {
     
+    var vRank = 0
+    
     // data Encapsulation
     
     private var _vName:String
@@ -24,7 +26,7 @@ class Videos {
     private var _vLinkToiTunes:String
     private var _vReleaseDte:String
     
-    var _vImageData:NSData?
+    var vImageData:NSData?
     
     // Make a getter
     
@@ -87,7 +89,7 @@ class Videos {
         if let img = data["im:image"] as? JSONArray,
             image = img[2] as? JSONDictionary,
             immage = image["label"] as? String {
-                _vImageUrl = immage.stringByReplacingOccurrencesOfString("100X100", withString: "600x600")
+                _vImageUrl = immage.stringByReplacingOccurrencesOfString("100x100", withString: "600x600")
             
         } else {
            
